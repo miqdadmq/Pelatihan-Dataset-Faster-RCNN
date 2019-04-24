@@ -52,6 +52,7 @@ https://github.com/tensorflow/models.git
 Karena yang saya gunakan adalah faster rcnn maka saya download faster_rcnn_inception_v2_coco pada :
 https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md
 Kemudian buat folder `images`, `training`, dan `inference_graph` pada `C:\tensorflow\models\research\object_detection`
+kemudian pindahkan folder `train` dan `test` pada folder `images`
 
 ## 11- Konfigurasi PYTHONPATH pada *environment variable*
 
@@ -72,15 +73,31 @@ protoc --python_out=. .\object_detection\protos\anchor_generator.proto .\object_
 ```
 ```
 (tensorflow) C:\tensorflow\models\research> python setup.py build
-```
-
-```
 (tensorflow) C:\tensorflow\models\research> python setup.py install
 ```
 
 ## 13- Tes Tensorflow
-tes apakah tensorflow sudah bekerja dengan jupyter notebook : `(tensorflow) C:\tensorflow\models\research\object_detection> jupyter notebook object_detection_tutorial.ipynb'
+tes apakah tensorflow sudah bekerja dengan jupyter notebook : `(tensorflow) C:\tensorflow\models\research\object_detection> jupyter notebook object_detection_tutorial.ipynb`
+
+## 14- Edit generate_tfrecord.py
+edit file `generate_tfrecord.py`
 
 ## 14- Membuat data untuk *training*
+Konversi data .xml ke .csv untuk menghasilkan `train_labels.csv` dan `test_labels.csv` pada folder `\object_detection\images`
+
+```
+cd C:\tensorflow\models\research\object_detection
+python xml_to_csv.py
+```
+
+Buat data `train.record` dan `test.record`
+
+```
+python generate_tfrecord.py --csv_input=images\train_labels.csv --image_dir=images\train --output_path=train.record
+python generate_tfrecord.py --csv_input=images\test_labels.csv --image_dir=images\test --output_path=test.record
+```
+
+
+
 
 
