@@ -27,12 +27,12 @@ activate tensorflow
 ```
 NB : tensorflow saat ini masih mendukung python versi 3.5 atau 3.6.
 
-## Install Tensorflow-GPU
+## 7- Install Tensorflow-GPU
 ```bash
 pip install --ignore-installed --upgrade tensorflow-gpu
 ```
 
-## Install *library* atau *package* yang dibutuhkan
+## 8- Install *library* atau *package* yang dibutuhkan
 
 ```bash
 (tensorflow1) C:\> conda install -c anaconda protobuf 
@@ -45,12 +45,11 @@ pip install --ignore-installed --upgrade tensorflow-gpu
 (tensorflow1) C:\> pip install opencv-python 
 ```
 
-## Download Tensorflow *Repository*
+## 9- Download Tensorflow *Repository*
 https://github.com/tensorflow/models.git
 
-## Download Model untuk dataset yang diinginkan
+## 10- Download Model untuk dataset yang diinginkan
 Karena yang saya gunakan adalah faster rcnn maka saya download faster_rcnn_inception_v2_coco pada :
 https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md
-
-##
+Kemudian buat folder `images`, `training`, dan `inference_graph` pada `C:\tensorflow\models\research\object_detection`
 
