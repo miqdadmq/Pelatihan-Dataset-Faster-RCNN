@@ -31,3 +31,26 @@ NB : tensorflow saat ini masih mendukung python versi 3.5 atau 3.6.
 ```bash
 pip install --ignore-installed --upgrade tensorflow-gpu
 ```
+
+## Install *library* atau *package* yang dibutuhkan
+
+```bash
+(tensorflow1) C:\> conda install -c anaconda protobuf 
+(tensorflow1) C:\> pip install pillow 
+(tensorflow1) C:\> pip install lxml 
+(tensorflow1) C:\> pip install Cython 
+(tensorflow1) C:\> pip install jupyter 
+(tensorflow1) C:\> pip install matplotlib 
+(tensorflow1) C:\> pip install pandas 
+(tensorflow1) C:\> pip install opencv-python 
+```
+
+## Download Tensorflow *Repository*
+https://github.com/tensorflow/models.git
+
+## Download Model untuk dataset yang diinginkan
+Karena yang saya gunakan adalah faster rcnn maka saya download faster_rcnn_inception_v2_coco pada :
+https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md
+
+##
+
