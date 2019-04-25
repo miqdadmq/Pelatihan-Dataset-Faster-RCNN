@@ -80,9 +80,12 @@ protoc --python_out=. .\object_detection\protos\anchor_generator.proto .\object_
 tes apakah tensorflow sudah bekerja dengan jupyter notebook : `(tensorflow) C:\tensorflow\models\research\object_detection> jupyter notebook object_detection_tutorial.ipynb`
 
 ## 14- Edit generate_tfrecord.py
-edit file `generate_tfrecord.py`
+edit file `generate_tfrecord.py` ubah *class name* sesuai dengan jenis object yang akan di-*training*
 
-## 14- Membuat data untuk *training*
+## 15- Buat labelmap
+Buat labelmap baru pada folder `/object_detection/training` dengan nama `labelmap.pbtxt`
+
+## 16- Membuat data untuk *training*
 Konversi data .xml ke .csv untuk menghasilkan `train_labels.csv` dan `test_labels.csv` pada folder `\object_detection\images`
 
 ```
@@ -97,7 +100,44 @@ python generate_tfrecord.py --csv_input=images\train_labels.csv --image_dir=imag
 python generate_tfrecord.py --csv_input=images\test_labels.csv --image_dir=images\test --output_path=test.record
 ```
 
+## 17- Konfigurasi *pipeline* untuk training dataset
+Masuk ke `C:\tensorflow\models\research\object_detection\samples\configs` dan salin `faster_rcnn_inception_v2_pets.config` ke folder `training` kemudian edit seperti berikut ini :
 
+### -
+Pada bagian `model` ubah `num_classes` sesuai dengan jumlah kelas yang dibuat
 
+### - 
+Pada bagian `fine_tune_checkpoint`:
+`C:/tensorflow/models/research/object_detection/faster_rcnn_inception_v2_coco_2018_01_28/model.ckpt`
 
+### -
+Pada bagian `train_input_reader` ubah `input_path` dan `label_map_path` menjadi :
+Input_path : `C:/tensorflow/models/research/object_detection/train.record`
+Label_map_path: `C:/tensorflow/models/research/object_detection/training/labelmap.pbtxt`
+
+### -
+Pada bagian `eval_config` ubah `num_examples` sesuai dengan jumlah gambar pada direktori `\object_detection\images\test`
+
+### -
+Pada bagian `eval_input_reader` ubah `input_path` dan `label_map_path` menjadi :
+Input_path : `C:/tensorflow/models/research/object_detection/test.record`
+Label_map_path: `C:/tensorflow/models/research/object_detection/training/labelmap.pbtxt`
+
+## 18- *Run Training*
+Jalankan *training* dengan perintah
+```
+python train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/faster_rcnn_inception_v2_pets.config
+```
+
+## 19- Tensorboard
+Untuk melihat grafik proses pelatihan atau *training* dataset buka `anaconda cmd` baru dan ketikkan :
+```
+(tensorflow) C:\tensorflow\models\research\object_detection>tensorboard --logdir=training
+```
+
+### 20- *Export* Inference_graph
+Jika training selesai, *export* inference_graph sesuai dengan jumlah `model-ckpt.XXXX` pada folder `\object_detection\training`, misalnya `model-ckpt.5642` 
+```
+python export_inference_graph.py --input_type image_tensor --pipeline_config_path training/faster_rcnn_inception_v2_pets.config --trained_checkpoint_prefix training/model.ckpt-XXXX --output_directory inference_graph
+```
 
