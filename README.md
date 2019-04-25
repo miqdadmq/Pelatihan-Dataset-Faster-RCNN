@@ -82,11 +82,13 @@ tes apakah tensorflow sudah bekerja dengan jupyter notebook : `(tensorflow) C:\t
 ## 14- Edit generate_tfrecord.py
 edit file `generate_tfrecord.py` ubah *class name* sesuai dengan jenis object yang akan di-*training*
 
-![alt text](https://github.com/miqdadmq/Pelatihan-Dataset-Faster-RCNN/Pic/tfrecorg.PNG)
+![alt text](https://github.com/miqdadmq/Pelatihan-Dataset-Faster-RCNN/blob/master/Pic/tfrecord.PNG)
  
 
 ## 15- Buat labelmap
 Buat labelmap baru pada folder `/object_detection/training` dengan nama `labelmap.pbtxt`
+
+![alt text](https://github.com/miqdadmq/Pelatihan-Dataset-Faster-RCNN/blob/master/Pic/labelmap.PNG)
 
 ## 16- Membuat data untuk *training*
 Konversi data .xml ke .csv untuk menghasilkan `train_labels.csv` dan `test_labels.csv` pada folder `\object_detection\images`
