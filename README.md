@@ -46,7 +46,7 @@ pip install --ignore-installed --upgrade tensorflow-gpu
 ```
 
 ## 9- Download Tensorflow *Repository*
-https://github.com/tensorflow/models.git
+https://github.com/tensorflow/models.git kemudian download *repository* ini https://github.com/miqdadmq/Pelatihan-Dataset-Faster-RCNN
 
 ## 10- Download Model untuk dataset yang diinginkan
 Karena yang saya gunakan adalah faster rcnn maka saya download faster_rcnn_inception_v2_coco pada :
